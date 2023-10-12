@@ -27,7 +27,6 @@ export const Container = styled.aside<ContainerProps>`
   transition: width 0.3s;
 
 
-
   button {
     background-color: ${({theme}) => theme.colors.red};
     width: 100%;
