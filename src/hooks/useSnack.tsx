@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { SnackContenxt } from "../contents/SnackContext";
+import { SnackContenxt } from "../contexts/SnackContext";
 
 export function useSnack() {
   return useContext(SnackContenxt)
