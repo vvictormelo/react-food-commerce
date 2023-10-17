@@ -1,5 +1,8 @@
 import { BrowserRouter } from 'react-router-dom'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import { AppRoutes } from './routes'
 
 import { Theme } from './styles/Theme'
@@ -17,6 +20,7 @@ export default function App() {
         <SnackProvider>
           <CartProvider>
             <AppRoutes />
+            <ToastContainer autoClose={2000}/>
             <GlobalStyle />
             <Normalize />
           </CartProvider>
