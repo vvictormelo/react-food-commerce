@@ -1,3 +1,5 @@
+import { FaTrashAlt } from 'react-icons/fa'
+
 import { useCart } from "../../../../hooks/useCart"
 
 import { currencyFormat } from "../../../../helpers/helpers/currencyformat"
@@ -6,9 +8,10 @@ import { Container } from "./styles"
 
 import plusImg from '../../../../assets/circle-plus.svg'
 import minusImg from '../../../../assets/circle-minus.svg'
+import { ConfirmOrder } from '../../../../components/ConfirmOrder'
 
 export function TableDesktop() {
-  const { cart } = useCart()
+  const { cart, removeSnackFromCart, snackCartDecrement, snackCartIncrement } = useCart()
 
   return (
     <Container>
@@ -35,14 +38,14 @@ export function TableDesktop() {
                 </td>
                 <td>
                   <div>
-                    <button type="button" onClick={() => console.log('decrementar snack', item)}>
+                    <button type="button" onClick={() => snackCartDecrement(item)}>
                       <img src={minusImg} alt='Remover quantidade'/>
                     </button>
                     <span>
                     {`${item.quantity}`.padStart(2, '0')}
                     </span>
-                    <button type="button" onClick={() => console.log('aumentar snack', item)}>
-                      <img src={plusImg} alt='Remover quantidade'/>
+                    <button type="button" onClick={() => snackCartIncrement(item)}>
+                      <img src={plusImg} alt='Aumentar quantidade'/>
                     </button>
                   </div>
                 </td>
@@ -50,13 +53,16 @@ export function TableDesktop() {
                   <h5>{currencyFormat(item.subTotal)}</h5>
                 </td>
                 <td>
-                  Deletar
+                  <button type='button' onClick={() => removeSnackFromCart(item)}>
+                    <FaTrashAlt/>
+                  </button>
                 </td>
               </tr>
             ))
           }
         </tbody>
       </table>
+      <ConfirmOrder/>
     </Container>
   )
 }
